@@ -1,32 +1,39 @@
-
-import {Text, View, ImageBackground, ScrollView} from 'react-native';
+import {View, ScrollView, FlatList} from 'react-native';
 import estilo from './estilo';
-
+import CardTenis from './CardTenis';
 
 export default function Mizuno() {
+  const produtos = [
+    {
+      id:"1",
+      imagem: require("../assets/Tenis/Mizuno/11.png"),
+      modelo: "Mizuno Cometa",
+      valor: "R$ 341,99",
+    },
+    {
+      id:"2",
+      imagem: require("../assets/Tenis/Mizuno/12.png"),
+      modelo: "Mizuno Cometa 2",
+      valor:  "R$ 464,49",
+    },
+  ];
+ 
   return (
-    <View style={estilo.container3}>
-        <ImageBackground
-          style={estilo.produto}
-          source={require("../assets/Tenis/Mizuno/11.png")}
-          borderRadius={10}
-          resizeMode="cover"
-        >
-          <Text style={estilo.produto_titulo}>Mizuno Cometa</Text>
-          <Text style={estilo.produto_preco}>R$ 341,99</Text>
-
-        </ImageBackground>
-
-        <ImageBackground
-          style={estilo.produto}
-          source={require("../assets/Tenis/Mizuno/12.png")}
-          borderRadius={10}
-          resizeMode="cover"
-        >
-          <Text style={estilo.produto_titulo}>Mizuno Cometa 2</Text>
-          <Text style={estilo.produto_preco}>R$ 464,49</Text>
-
-        </ImageBackground>
-    </View>
+    
+    <ScrollView>
+      <View style={estilo.container2}>
+        <FlatList
+          data={produtos}
+          renderItem={({item})=>
+            <CardTenis 
+                imagem={item.imagem}
+                modelo={item.modelo}
+                valor={item.valor}
+            />
+          }
+          keyExtractor={item => item.id}
+        />        
+      </View>
+    </ScrollView>
   );
 }

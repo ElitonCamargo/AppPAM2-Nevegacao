@@ -1,72 +1,57 @@
 
-import {Text, View, ImageBackground, ScrollView} from 'react-native';
+import {View, ScrollView, FlatList} from 'react-native';
 import estilo from './estilo';
-
+import CardTenis from './CardTenis';
 
 export default function Adidas() {
+  const produtos = [
+    {
+      id:"1",
+      imagem: require("../assets/Tenis/Adidas/6.png"),
+      modelo: "Adidas Coreracer Masculino",
+      valor: "R$ 179,99",
+    },
+    {
+      id:"2",
+      imagem: require("../assets/Tenis/Adidas/7.png"),
+      modelo: "Adidas Breaknet Masculino",
+      valor:  "R$ 208,99",
+    },
+    {
+      id:"3",
+      imagem: require("../assets/Tenis/Adidas/8.png"),
+      modelo: "Adidas Lite Racer Rebold 1",
+      valor:  "R$ 379,99",
+    },
+    {
+      id:"4",
+      imagem: require("../assets/Tenis/Adidas/9.png"),
+      modelo: "Adidas Lite Racer Rebold 2",
+      valor:  "R$329,05",
+    },
+    {
+      id:"5",
+      imagem: require("../assets/Tenis/Adidas/10.png"),
+      modelo: "Adidas Lite Racer Rebold 3",
+      valor:  "R$ 218,49",
+    }
+  ];
+ 
   return (
+    
     <ScrollView>
       <View style={estilo.container2}>
-        <ImageBackground
-          style={estilo.produto}
-          source={require("../assets/Tenis/Adidas/6.png")}
-          borderRadius={10}
-          resizeMode="cover"
-        >
-          <Text style={estilo.produto_titulo}>Adidas Coreracer Masculino</Text>
-          <Text style={estilo.produto_preco}>R$ 179,99</Text>
-
-        </ImageBackground>
-
-        <ImageBackground
-          style={estilo.produto}
-          source={require("../assets/Tenis/Adidas/7.png")}
-          borderRadius={10}
-          resizeMode="cover"
-        >
-          <Text style={estilo.produto_titulo}>Adidas Breaknet Masculino</Text>
-          <Text style={estilo.produto_preco}>R$ 208,99</Text>
-
-        </ImageBackground>
-
-        <ImageBackground
-          style={estilo.produto}
-          source={require("../assets/Tenis/Adidas/8.png")}
-          borderRadius={10}
-          resizeMode="cover"
-        >
-          <Text style={estilo.produto_titulo}>Adidas Lite Racer Rebold 1</Text>
-          <Text style={estilo.produto_preco}>R$ 379,99</Text>
-
-        </ImageBackground>
-
-        
-        <ImageBackground
-          style={estilo.produto}
-          source={require("../assets/Tenis/Adidas/9.png")}
-          borderRadius={10}
-          resizeMode="cover"
-        >
-          <Text style={estilo.produto_titulo}>Adidas Lite Racer Rebold 2</Text>
-          <Text style={estilo.produto_preco}>329,05 </Text>
-
-        </ImageBackground>
-
-        <ImageBackground
-          style={estilo.produto}
-          source={require("../assets/Tenis/Adidas/10.png")}
-          borderRadius={10}
-          resizeMode="cover"
-        >
-          <Text style={estilo.produto_titulo}>Adidas Lite Racer Rebold 3</Text>
-          <Text style={estilo.produto_preco}>R$ 218,49</Text>
-
-        </ImageBackground>
-
-
-
-
-
+        <FlatList
+          data={produtos}
+          renderItem={({item})=>
+            <CardTenis 
+                imagem={item.imagem}
+                modelo={item.modelo}
+                valor={item.valor}
+            />
+          }
+          keyExtractor={item => item.id}
+        />        
       </View>
     </ScrollView>
   );
