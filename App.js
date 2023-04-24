@@ -15,26 +15,27 @@ export default function App() {
   return (
     <NavigationContainer>
       
-        <Menu
-          screenOptions={{
-            tabBarStyle: {
-              backgroundColor: "#ccc"              
-            },
-            tabBarLabelStyle: {
-              fontSize: 18,
-              fontWeight: 'bold',
-            },
-            tabBarActiveBackgroundColor: "#fff",
-            tabBarInactiveTintColor: "#555",
-            tabBarActiveTintColor: "#222",
-            tabBarLabelPosition: 'beside-icon',
-          }}
+        <Menu screenOptions={{
+          tabBarStyle: {
+            backgroundColor: "#ccc"              
+          },
+          tabBarLabelStyle: {
+            fontSize: 20,
+            fontWeight: 'bold',
+          },
+          tabBarActiveBackgroundColor: "#fff",
+          tabBarInactiveTintColor: "#555",
+          tabBarActiveTintColor: "#222",
+          tabBarLabelPosition: "beside-icon"
+
+        }}
         >
-          <ItensMenu name="Nike" component={Nike} options={{
-            tabBarLabel: 'Nike',
-            tabBarIcon:({color, size})=>(<AntDesign name="check" size={size} color={color} />),
-            tabBarBadge: 3,
-          }}/>
+          <ItensMenu name="Nike" component={Nike}
+            options={{
+              tabBarIcon:({color, size})=>(<AntDesign name="check" size={size} color={color} />),
+              tabBarBadge: 4,
+            }}
+          />
           <ItensMenu name="Mizuno" component={Mizuno}/>
           <ItensMenu name="Adidas" component={Adidas}/>
         </Menu>
@@ -42,3 +43,5 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+
